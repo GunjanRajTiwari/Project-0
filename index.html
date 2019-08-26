@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Wish Me</title>
+
+    <style>
+       .result{
+           text-align: center;
+           font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+           font-size: 80px;
+           color: rgb(2, 78, 2);
+           text-shadow: 2px 2px #777777;
+           padding: 0%;
+        
+           
+       }
+       .mid , .form{
+            margin: auto;
+            margin-top: 50px;
+            width: 54%;
+            border: 3px solid darkgreen;
+            border-radius: 20px;
+       }
+       .inner { 
+          position: relative;
+          margin: auto;
+          width: 60%;;
+        }
+        #h3{
+            text-align: center;
+            color: rgb(2, 51, 2);
+            font-size: 30px;
+            text-shadow: 1px 1px #777777;
+        }
+        #button1{
+            height: 60px;
+            width: 120px;
+            border: 2px solid darkgreen;
+            background-color: lightgreen;
+            
+        }
+        #button1:hover{
+            background-color: darkgreen;
+            color: aliceblue;
+            height: 60px;
+            width: 120px;
+        }
+        #button2{
+            color: darkgreen;
+            height: 30px;
+            width: 60px;
+        }
+        input{
+            height: 30px;
+
+        }
+        #buttonwala{
+            margin-left: 45%;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body background="back.jpg">
+
+    <div class="mid">
+        <h1 id="headline" class="result"> !!!WELCOME!!! </h1>
+    </div>
+    <div id="buttonwala">   
+    <button id="button1" onclick="check();"> Check Birthdays </button>
+    </div>
+    <div class="form">
+        <div class="inner">
+        <form action="index.html" method="GET">
+            <h3 id="h3">Add Birthday</h3>
+            <input id="naam" type="text" name="name" placeholder="Full Name" required> 
+            <input id="janma" type="date" name="bday" required> 
+            <button id="button2" onclick="add();">Submit</button>
+        </form>
+        </div>
+    </div>
+
+    <script>
+    var names = new Array();
+    var birthdays = new Array();
+    var today = new Date();
+    var date = today.getDate();
+    var month = today.getMonth();
+
+    function add(){
+        onesName = document.getElementById('naam').value;
+        onesDate = document.getElementById('janma').value
+        names.push(onesName);
+        birthdays.push(onesDate);
+    };
+
+    function check(){
+        var i;
+        for (i = 0; i < names.length; i++) {
+            var bd = birthdays[i];
+            var month1 = bd.getMonth();
+            var date1 = bd.getDate();
+            if(date==date1 && month==month1){
+                document.getElementById('headline').innerHTML = "Happy Birthday" + names[i] 
+            }
+        };
+    };
+    </script>
+</body>
+</html>
