@@ -39,7 +39,8 @@
             height: 60px;
             width: 120px;
             border: 2px solid darkgreen;
-            background-color: lightgreen;
+            background-color: lightgray;
+            border-radius: 8px;
             
         }
         #button1:hover{
@@ -61,10 +62,13 @@
             margin-left: 45%;
             margin-top: 20px;
         }
+        body{
+            background-image: url("back.jpg")
+        }
     </style>
 </head>
 
-<body background="back.jpg">
+<body id="body">
 
     <div class="mid">
         <h1 id="headline" class="result"> !!!WELCOME!!! </h1>
@@ -78,7 +82,7 @@
             <h3 id="h3">Add Birthday</h3>
             <input id="naam" type="text" name="name" placeholder="Full Name" required> 
             <input id="janma" type="date" name="bday" required> 
-            <button id="button2" onclick="add();">Submit</button>
+            <button type="button" id="button2" onclick="add();">Submit</button>
         </form>
         </div>
     </div>
@@ -100,11 +104,16 @@
     function check(){
         var i;
         for (i = 0; i < names.length; i++) {
-            var bd = birthdays[i];
+            var bd = new Date(birthdays[i]);
             var month1 = bd.getMonth();
             var date1 = bd.getDate();
             if(date==date1 && month==month1){
-                document.getElementById('headline').innerHTML = "Happy Birthday" + names[i] 
+                if(document.getElementById('headline').innerHTML == " !!!WELCOME!!! "){
+                    document.getElementById('headline').innerHTML = "Happy Birthday ";
+                    document.getElementById('body').style.backgroundImage = "url('https://i.etsystatic.com/14856466/r/il/6ab064/1685885290/il_570xN.1685885290_8h3e.jpg')";
+                }
+                document.getElementById('headline').innerHTML += names[i] + " ";
+                
             }
         };
     };
